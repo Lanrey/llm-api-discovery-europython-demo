@@ -326,21 +326,15 @@ def build():
         text="Olusola Akinsulere",
         font=HEADING_F, size=Pt(40), bold=True, color=WHITE,
         sname="slide-title", alt="Speaker name: Olusola Akinsulere")
-    txbox(slide, Inches(0.54), Inches(1.6), Inches(6.5), Inches(0.55),
-        text="Engineering Lead · Retailloop",
-        font=BODY_F, size=Pt(24), color=LBLUE, sname="role")
-    txbox(slide, Inches(0.54), Inches(2.3), Inches(6.5), Inches(1.5),
-        text="Distributed systems · Payments · Data platforms\nPython · Backend · Practical ML",
+    txbox(slide, Inches(0.54), Inches(1.6), Inches(6.5), Inches(1.5),
+        text="Distributed Systems · Data Platforms · Backend · Practical ML\nFrom Lagos · Based in Helsinki",
         font=BODY_F, size=Pt(20), color=LAVENDER, wrap=True, sname="bio")
-    txbox(slide, Inches(0.54), Inches(3.9), Inches(3.5), Inches(0.5),
-        text="olusola.xyz", font=BODY_F, size=Pt(20), color=LPURPLE,
-        sname="website", alt="Website: olusola.xyz")
     slide_number(slide, n)
     add_notes(slide,
         "ABOUT ME — show while audience settles (~60 seconds).\n\n"
-        "'I'm Olusola, Engineering Lead at Retailloop. "
+        "'I'm Olusola, Principal Consultant at QuantabridgeLabs. "
         "I build reliable data systems. This talk is about making that easier.'\n\n"
-        "Point to screen: 'QR / olusola.xyz — scan now or at the end.' Keep it brief.")
+        "Point to screen: 'QR / quantabridgelabs.com — scan now or at the end.' Keep it brief.")
 
     # ── SLIDE 2: Title ───────────────────────────────────────────────────────
     n += 1
@@ -699,19 +693,18 @@ def build():
           "the Linear step runs. No Temporal. No Celery. No infrastructure.\n"
           "This is the actual pipeline you will see me run in the demo.'")
 
-    # ── SLIDE 20: Fallback — backup demo video (hidden slide) ────────────────
+    # ── SLIDE 20: Demo video reference ───────────────────────────────────────
     n += 1
     slide = blank_slide(prs)
-    # Dark background with a standout note — this slide is only shown if live demo fails
     rect(slide, Inches(0), Inches(0), Inches(10), Inches(5.625), BG_DARK, decorative=True)
     txbox(slide, Inches(0.5), Inches(0.4), Inches(9.0), Inches(0.7),
-        text="BACKUP — Demo Video",
-        font=HEADING_F, size=Pt(30), bold=True, color=CORAL,
-        sname="slide-title", alt="Backup demo video slide")
-    txbox(slide, Inches(0.5), Inches(1.2), Inches(9.0), Inches(1.0),
-        text="Open Loom recording → play from timestamp",
-        font=BODY_F, size=Pt(22), color=LAVENDER, sname="instruction")
-    txbox(slide, Inches(0.5), Inches(2.3), Inches(9.0), Inches(0.6),
+        text="Demo — Video Playing",
+        font=HEADING_F, size=Pt(30), bold=True, color=LBLUE,
+        sname="slide-title", alt="Demo Loom video reference slide")
+    txbox(slide, Inches(0.5), Inches(1.2), Inches(9.0), Inches(0.7),
+        text="Loom recording plays in background — talk through each step live",
+        font=BODY_F, size=Pt(20), color=LAVENDER, sname="instruction")
+    txbox(slide, Inches(0.5), Inches(2.1), Inches(9.0), Inches(0.5),
         text="Timestamps:",
         font=HEADING_F, size=Pt(18), bold=True, color=LBLUE, sname="ts-head")
     timestamps = [
@@ -724,16 +717,17 @@ def build():
         "4:00  Interactive assistant (pipeline chat)",
     ]
     for i, ts in enumerate(timestamps):
-        txbox(slide, Inches(0.5), Inches(2.95 + i * 0.32), Inches(9.0), Inches(0.3),
+        txbox(slide, Inches(0.5), Inches(2.75 + i * 0.32), Inches(9.0), Inches(0.3),
             text=ts, font=CODE_F, size=Pt(14), color=GRAY, sname=f"ts-{i+1}")
     txbox(slide, Inches(0.5), Inches(5.1), Inches(9.0), Inches(0.35),
         text="https://www.loom.com/share/8f29b2c846d74686977947a0e27ee1c1",
         font=CODE_F, size=Pt(13), color=CORAL, sname="loom-url")
     slide_number(slide, n)
     add_notes(slide,
-        "FALLBACK SLIDE — only use if live demo fails.\n\n"
-        "Say calmly: 'Let me show you a recording of exactly what this looks like.'\n"
-        "Open Loom, play from the relevant timestamp.\n\n"
+        "DEMO REFERENCE SLIDE — the Loom video is your background in the HTML deck.\n\n"
+        "Open loom.com/share/8f29b2c846d74686977947a0e27ee1c1 before presenting.\n"
+        "Start the video, then advance to the next slide — talk through each act\n"
+        "while the recording plays in the background.\n\n"
         "Timestamps:\n"
         "  0:00  Health check\n"
         "  0:20  Add feature store\n"
@@ -741,13 +735,13 @@ def build():
         "  1:50  First sync + self-healing\n"
         "  2:30  Incremental sync\n"
         "  2:50  Fraud detection pipeline\n"
-        "  4:00  Chat assistant\n\n"
-        "After video: 'The whole thing. In under 5 minutes. Let me show you why.'")
+        "  4:00  Chat assistant\n")
 
     # ── SLIDE 21: Section break — Live Demo ──────────────────────────────────
     n += 1
     section_break(prs, n, "Live Demo", "Fraud detection — zero to pipeline in real time",
-        notes="TIMING: 12:00 — SWITCH TO TERMINAL.\n\n"
+        notes="TIMING: 12:00 — Loom video plays in the background (HTML deck).\n"
+              "Talk through each act as the recording runs.\n\n"
               "ACT 1 — Health check (20s)\n"
               "  pipeline doctor\n\n"
               "ACT 2 — Start all services (20s)\n"
@@ -768,8 +762,7 @@ def build():
               "  pipeline sync status\n\n"
               "ACT 7 — Full fraud detection pipeline (90s)\n"
               "  uv run python -m fraud_demo.run_pipeline\n"
-              "  (Feast + 15k transactions → model → MLflow → Prometheus → Linear)\n\n"
-              "FALLBACK: hover bottom-right on this slide → click 📹 backup → Loom plays.")
+              "  (Feast + 15k transactions → model → MLflow → Prometheus → Linear)\n")
 
     # ── SLIDE 22–29: Demo slides ──────────────────────────────────────────────
 
@@ -1112,9 +1105,9 @@ def build():
         alt="Closing quote: The best pipeline is the one your team actually uses "
             "— because it was the easiest one to set up.")
     txbox(slide, Inches(0.54), Inches(4.6), Inches(4.0), Inches(0.5),
-        text="olusola.xyz",
+        text="quantabridgelabs.com",
         font=BODY_F, size=Pt(22), color=GRAY,
-        sname="website", alt="Website: olusola.xyz")
+        sname="website", alt="Website: quantabridgelabs.com")
     slide_number(slide, n)
     add_notes(slide,
         "Let the quote sit.\n"

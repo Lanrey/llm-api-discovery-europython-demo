@@ -197,9 +197,25 @@
             border: 0;
         }
 
+        /* ── Card components ── */
+        .card {
+            background: var(--bg-dark);
+            padding: 0.6em 0.8em;
+            border-radius: 4px;
+        }
+        .card-red    { border-left: 3px solid var(--coral); }
+        .card-green  { border-left: 3px solid var(--lblue); }
+        .card-orange { border-left: 3px solid var(--lpurple); }
+        .card-blue   { border-left: 3px solid var(--lblue); }
+        .card-purple { border-left: 3px solid var(--lpurple); }
+
+        /* ── Extra text utilities ── */
+        .green { color: var(--lblue); }
+        .muted { color: var(--gray); font-size: 0.7em; }
+
         /* ── Focus styles for keyboard navigation ── */
-        .reveal section:focus { outline: 3px solid var(--blue); outline-offset: 4px; }
-        .reveal a:focus       { outline: 3px solid var(--orange); outline-offset: 2px; }
+        .reveal section:focus { outline: 3px solid var(--lblue); outline-offset: 4px; }
+        .reveal a:focus       { outline: 3px solid var(--coral); outline-offset: 2px; }
     </style>
 </head>
 <body>
@@ -215,34 +231,29 @@
 
         <div>
             <h2 style="font-size: 1.9em; margin: 0 0 0.1em; color: #ffffff; font-weight: 800;">Olusola Akinsulere</h2>
-            <p style="font-size: 0.75em; color: var(--lblue); margin: 0 0 1.0em; font-family: 'Open Sans', sans-serif; font-weight: 700;">Engineering Lead · Retailloop</p>
 
             <div style="font-size: 0.65em; color: var(--lavender); line-height: 1.9;">
-                <div>Distributed systems · Payments · Data platforms</div>
-                <div>Python · Backend · Practical ML</div>
+                <div>Distributed Systems · Data Platforms · Backend · Practical ML</div>
+                <div style="color: var(--gray); font-size: 0.9em; margin-top: 0.3em;">From Lagos · Based in Helsinki</div>
             </div>
 
-            <div style="margin-top: 1.2em; font-size: 0.62em;">
-                <a href="https://olusola.xyz" style="color: var(--lpurple); text-decoration: none; font-weight: 700;">olusola.xyz</a>
-            </div>
         </div>
 
         <div style="text-align: center;">
             <div class="qr-box">
                 <div id="qr-quanta"></div>
-                <img id="qr-fallback" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://olusola.xyz" width="140" height="140" alt="QR code linking to olusola.xyz — speaker website" style="display:none"/>
+                <img id="qr-fallback" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://quantabridgelabs.com" width="140" height="140" alt="QR code linking to quantabridgelabs.com — speaker website" style="display:none"/>
             </div>
-            <p class="qr-label" style="font-size: 0.6em; margin-top: 0.5em;" aria-hidden="true">olusola.xyz</p>
         </div>
     </div>
 
     <aside class="notes">
         TIMING: Pre-talk. Show while audience settles — stay here ~60 seconds.
 
-        "I'm Olusola, Engineering Lead at Retailloop. I build distributed systems
+        "I'm Olusola, Principal Consultant at QuantabridgeLabs. I build distributed systems
         and data platforms. This talk is about making ML pipelines easier to connect."
 
-        Point to QR: "Scan olusola.xyz now or grab it at the end."
+        Point to QR: "Scan quantabridgelabs.com now or grab it at the end."
 
         Keep it brief — we're building to the hands-up question on the next slide.
     </aside>
@@ -482,7 +493,7 @@ pipeline sync run my-feature-store
             <span class="lpurple">Config-driven</span>
             <span class="lblue">Self-configuring</span>
         </div>
-        <div style="height: 6px; background: linear-gradient(to right, var(--red), var(--orange), var(--green)); border-radius: 3px;"></div>
+        <div style="height: 6px; background: linear-gradient(to right, var(--coral), var(--lpurple), var(--lblue)); border-radius: 3px;"></div>
         <div style="display: flex; justify-content: space-between; margin-top: 0.5em; font-size: 0.7em; color: var(--gray);">
             <span>Write everything</span>
             <span>Configure most things</span>
@@ -744,28 +755,33 @@ result = await engine.run(pipeline)
 <!-- ══════════════════════════════════════════
      SECTION 4: LIVE DEMO (12:00–17:00)
 ════════════════════════════════════════════ -->
+<!-- Loom video plays as a dimmed background across all demo slides.
+     Navigate vertically through each act — video keeps rolling. -->
+<section data-background-iframe="https://www.loom.com/embed/8f29b2c846d74686977947a0e27ee1c1?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+         data-background-opacity="0.18"
+         data-background-interactive="true"
+         aria-label="Section 4: Live demo with Loom video background">
 <section class="transition-slide" aria-label="Section 4: Live demo — zero to pipeline in real time">
     <div class="gray" style="font-family: monospace; text-align: center; font-size: 0.6em; margin-bottom: 1em;" aria-hidden="true">12:00 — 17:00</div>
     <div class="demo-banner">
         <p>🎬 Live Demo</p>
     </div>
     <p class="gray" style="margin-top: 1em;">Zero to pipeline in real time</p>
-
-    <!-- Fallback button — hidden until needed. Click to open Loom recording. -->
-    <div id="fallback-btn-wrapper" style="position: absolute; bottom: 1.2em; right: 1.2em; opacity: 0.25; transition: opacity 0.2s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.25'">
-        <button onclick="openFallbackVideo()"
-                style="background: var(--bg-dark); border: 1.5px solid var(--gray); color: var(--gray);
-                       font-family: 'Consolas', monospace; font-size: 0.55em; padding: 0.4em 0.9em;
-                       border-radius: 4px; cursor: pointer; letter-spacing: 0.05em;"
-                aria-label="Open fallback demo video">
-            📹 backup
-        </button>
-    </div>
+    <button onclick="openFallbackVideo()"
+            style="display: inline-block; margin-top: 1em;
+                   border: 1.5px solid var(--gray); border-radius: 4px;
+                   padding: 0.35em 1em; font-size: 0.5em;
+                   font-family: 'Consolas', monospace; color: var(--gray);
+                   background: transparent; cursor: pointer;">
+        📹 demo video
+    </button>
 
     <aside class="notes">
-        TIMING: 12:00 — SWITCH TO TERMINAL NOW.
+        TIMING: 12:00 — Loom video is playing in the background. Talk over it.
 
-        Complete demo script (keep on phone as backup):
+        The video is a recording of the exact demo you are about to walk through.
+        Narrate each step as the video runs — audience sees the terminal output on
+        screen and hears your explanation live.
 
         ACT 1 — Health check (20s)
           pipeline doctor
@@ -794,8 +810,6 @@ result = await engine.run(pipeline)
         ACT 7 — Full fraud pipeline (90s)
           uv run python -m fraud_demo.run_pipeline
           → Feast + 15k transactions → train → MLflow → Prometheus → Linear. 4.4 seconds.
-
-        FALLBACK: hover bottom-right → click backup → Loom overlay plays.
     </aside>
 </section>
 
@@ -1068,6 +1082,8 @@ No connector classes written. No YAML. No SDK imports per source.
         Pause. Let it land.
     </aside>
 </section>
+
+</section><!-- end Loom background wrapper -->
 
 <!-- ══════════════════════════════════════════
      SECTION 5: RELIABILITY (17:00–23:00)
@@ -1463,18 +1479,16 @@ uv run python -m examples.demo_pipeline</code></pre>
     });
 </script>
 
-<!-- ── Fallback demo video modal ──────────────────────────────────────────── -->
-<!-- Replace LOOM_URL below with your actual Loom recording URL before the talk -->
+
+<!-- ── Loom demo video modal ──────────────────────────────────────────────── -->
 <div id="fallback-modal"
      style="display:none; position:fixed; inset:0; z-index:9999;
             background:rgba(0,0,0,0.92); align-items:center; justify-content:center;
-            flex-direction:column; gap:1.2em;"
-     onclick="if(event.target===this) this.style.display='none'">
+            flex-direction:column; gap:1.2em;">
 
     <p style="font-family:'Open Sans',sans-serif; color:#aae5fa; font-size:1em;
-              margin:0; letter-spacing:0.05em;">BACKUP DEMO</p>
+              margin:0; letter-spacing:0.05em;">DEMO VIDEO</p>
 
-    <!-- Loom embed — swap in your URL -->
     <div style="position:relative; width:min(860px,90vw); aspect-ratio:16/9;
                 border-radius:8px; overflow:hidden; background:#000;">
         <iframe id="loom-iframe"
@@ -1484,19 +1498,12 @@ uv run python -m examples.demo_pipeline</code></pre>
                 allowfullscreen
                 style="position:absolute; inset:0; width:100%; height:100%;">
         </iframe>
-        <div id="loom-placeholder"
-             style="position:absolute; inset:0; display:flex; align-items:center;
-                    justify-content:center; background:var(--bg-dark);">
-            <p style="color:var(--gray); font-family:'Consolas',monospace; font-size:0.8em; margin:0;">
-                Loading…
-            </p>
-        </div>
     </div>
 
     <button onclick="closeFallbackVideo()"
             style="background:transparent; border:1px solid var(--gray); color:var(--gray);
                    font-family:'Consolas',monospace; font-size:0.65em; padding:0.4em 1.2em;
-                   border-radius:4px; cursor:pointer; margin-top:0.4em;">
+                   border-radius:4px; cursor:pointer;">
         ✕ close  (or click outside)
     </button>
 </div>
@@ -1505,30 +1512,17 @@ uv run python -m examples.demo_pipeline</code></pre>
 function openFallbackVideo() {
     var modal = document.getElementById('fallback-modal');
     var iframe = document.getElementById('loom-iframe');
-    var placeholder = document.getElementById('loom-placeholder');
-    var src = iframe.getAttribute('data-loom-src');
-    // Load the video immediately when opening
-    if (src) {
-        iframe.src = src;
-        if (placeholder) placeholder.style.display = 'none';
-    }
+    iframe.src = iframe.getAttribute('data-loom-src');
     modal.style.display = 'flex';
 }
 
 function closeFallbackVideo() {
     var modal = document.getElementById('fallback-modal');
     var iframe = document.getElementById('loom-iframe');
-    // Stop video playback by resetting src
     iframe.src = 'about:blank';
     modal.style.display = 'none';
-    // Restore placeholder for next open
-    var placeholder = document.getElementById('loom-placeholder');
-    if (placeholder) placeholder.style.display = 'flex';
-    // Reload src attribute so next open works
-    iframe.setAttribute('data-loom-src', 'https://www.loom.com/embed/8f29b2c846d74686977947a0e27ee1c1');
 }
 
-// Click outside modal to close
 document.getElementById('fallback-modal').addEventListener('click', function(e) {
     if (e.target === this) closeFallbackVideo();
 });
@@ -1543,7 +1537,7 @@ document.getElementById('fallback-modal').addEventListener('click', function(e) 
         if (!container) return;
         try {
             new QRCode(container, {
-                text: 'https://olusola.xyz',
+                text: 'https://quantabridgelabs.com',
                 width: 140,
                 height: 140,
                 colorDark: '#000000',
